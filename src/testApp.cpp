@@ -17,7 +17,7 @@ void testApp::setup(){
 
 	ballSize = 50;
 	
-	paddleWidth = 40;
+	paddleWidth = 50;
 	paddleHeight = 200;
 	paddleA.set(0, screenHeight/2);
 	paddleB.set(screenWidth-paddleWidth, screenHeight/2);
@@ -95,13 +95,18 @@ void testApp::update(){
 		}
 	
 	
-	//bounce off sides, for now. GOAAL
+	// Point condition:. GOAAL
 	if ((ballPos.x -ballSize<= 0)||(ballPos.x +ballSize >= screenWidth))
 	{
 		if (ballSpeed.x > 0)
+		{
+			userBScore++;
 			ballSpeed.set(-2.5,  ballSpeed.y);
-		else
+		}
+		else{
+			userAScore++;
 			ballSpeed.set(2.5,  ballSpeed.y);
+		}
 		ballPos.set(screenWidth/2, screenHeight/2);
 		info = "GOALLLLLL";
 	}
@@ -174,12 +179,20 @@ void testApp::draw(){
 	//draw the paddles
 	ofSetColor(150, 150, 150);
 	ofRect(paddleA.x, paddleA.y, paddleWidth, paddleHeight);
+	ofSetColor(255, 0, 0);
+	ofDrawBitmapString(ofToString(userAScore) , paddleA.x+paddleWidth/2.5, paddleA.y+paddleHeight/2.5); 
+	
+	ofSetColor(150, 150, 150);
 	ofRect(paddleB.x, paddleB.y, paddleWidth, paddleHeight);
+	ofSetColor(0, 0, 255);
+	ofDrawBitmapString(ofToString(userBScore) , paddleB.x+paddleWidth/2.5, paddleB.y+ paddleHeight/2.5); 
 
 	ofSetColor(0, 0, 150);
 
 	ofDrawBitmapString(info , 30, 30);
 	ofDrawBitmapString(info2 , 30, 50);
+
+
 
 	
 	
