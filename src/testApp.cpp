@@ -91,7 +91,7 @@ void testApp::update(){
 		if ((ballPos.y -ballSize>= paddleB.y -paddleHeight)&&(ballPos.y -ballSize<= paddleB.y +paddleHeight))
 		{
 			ballSpeed.set(ballSpeed.x *-1.2, ballSpeed.y);
-			info= "noo goal";
+			info= "...";
 		}
 	
 	
@@ -100,15 +100,15 @@ void testApp::update(){
 	{
 		if (ballSpeed.x > 0)
 		{
-			userBScore++;
+			userAScore++;
 			ballSpeed.set(-2.5,  ballSpeed.y);
 		}
 		else{
-			userAScore++;
+			userBScore++;
 			ballSpeed.set(2.5,  ballSpeed.y);
 		}
 		ballPos.set(screenWidth/2, screenHeight/2);
-		info = "GOALLLLLL";
+		info = "GOOOOAAAAALLLLLL!";
 	}
 	
 	//*************************
@@ -192,9 +192,32 @@ void testApp::draw(){
 	ofDrawBitmapString(info , 30, 30);
 	ofDrawBitmapString(info2 , 30, 50);
 
-
-
-	
+//	user.draw();
+//	ofSetColor(255, 255, 255);
+//
+//	liveImg.setFromPixels(rgb.getImagePixels(), 640, 480, OF_IMAGE_COLOR);
+//	
+//	//liveImg.draw(0,0);
+//	
+//	//just trying to get neckA
+//	int headsize = 50;
+//	
+//	int headNWx = neckA.x -headsize;
+//	int headNWy= neckA.y -headsize;
+//	
+//	vector <unsigned char > x;
+//	for (int i=headNWy; i<headNWy+headsize; i++) //this is y
+//		{
+//			for (int j=headNWx; j<headNWx+headsize; j++)   //this is x
+//			{
+//				x.push_back(liveImg.getPixels()[i*j+j]);
+//				//cout << x;
+//				//cout << endl;
+//			}
+//		}
+//	
+//	liveImg.setFromPixels(x, headsize*2, headsize*2, OF_IMAGE_COLOR);
+//	liveImg.draw(0,0);
 	
 	if (cheatmode==1)
 	{

@@ -69,6 +69,10 @@ class testApp : public ofBaseApp{
 	int userAScore;
 	int userBScore;
 	
+	ofImage liveImg;
+	ofImage headImg;
+
+	
 };
 
 #endif
